@@ -177,6 +177,9 @@ export default function Home() {
             <TrendingUp className="w-4 h-4 text-white" />
           </div>
           <span className="font-bold tracking-tight">{t("footer.stellarInsights")}</span>
+          <span className="hidden md:inline text-xs text-muted-foreground/70">
+            {t("footer.tagline")}
+          </span>
         </div>
         <div className="flex gap-8 text-sm text-muted-foreground">
           <a href="#" className="hover:text-foreground transition-colors">

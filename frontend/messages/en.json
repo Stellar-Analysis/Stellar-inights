@@ -81,7 +81,7 @@
     "hero": {
       "liveBadge": "Live Network Intelligence Active",
       "title": "QUANTIFYING",
-      "titleHighlight": "NETWORK TRUST",
+      "titleHighlight": "STELLAR NETWORK TRUST",
       "subtitle": "Stellar Insights provides institutional-grade telemetry for the Stellar payment network. Move beyond transaction counting; analyze liquidity depth, corridor reliability, and settlement finality in real-time.",
       "enterTerminal": "Enter Terminal",
       "connectIdentity": "Connect Identity",
@@ -119,7 +119,8 @@
       "networkStatus": "Network Status",
       "apiKeys": "API Keys",
       "governance": "Governance",
-      "copyright": "© 2026 STELLAR_INSIGHTS // v1.4.0-STABLE"
+      "copyright": "© 2026 STELLAR_INSIGHTS // v1.4.0-STABLE",
+      "tagline": "Purpose-built for the Stellar network."
     }
   },
   "contact": {
