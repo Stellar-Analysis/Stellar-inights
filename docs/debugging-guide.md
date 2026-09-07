@@ -401,7 +401,7 @@ RUST_LOG=debug LOG_FORMAT=pretty cargo run
 ### ELK Stack (optional local setup)
 
 ```bash
-docker-compose -f docker-compose.elk.yml up -d
+docker-compose -f elk/docker-compose.elk.yml up -d
 # Kibana: http://localhost:5601
 # Elasticsearch: http://localhost:9200
 # Logstash receives logs on port 5000 when LOGSTASH_ENABLED=true

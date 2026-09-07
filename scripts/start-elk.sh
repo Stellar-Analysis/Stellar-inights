@@ -3,7 +3,7 @@
 echo "Starting ELK Stack for Stellar Insights..."
 
 # Start ELK services
-docker-compose -f docker-compose.elk.yml up -d
+docker-compose -f elk/docker-compose.elk.yml up -d
 
 echo "Waiting for Elasticsearch to be ready..."
 until curl -s http://localhost:9200/_cluster/health | grep -q '"status":"green\|yellow"'; do
