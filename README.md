@@ -1,4 +1,4 @@
-# 🌌 Stellar Insights
+# 🌌 Stellar Analysis
 
 ### _brought to you by Stellar Analysis_ ✨
 
