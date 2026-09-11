@@ -1,0 +1,5 @@
+{
+  "framework": "nextjs",
+  "installCommand": "pnpm --dir frontend install --frozen-lockfile",
+  "buildCommand": "pnpm --dir frontend build"
+}
