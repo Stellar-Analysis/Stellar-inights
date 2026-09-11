@@ -479,7 +479,6 @@ const AnchorTable: React.FC<AnchorTableProps> = ({ anchors, loading = false }) =
       </div>
     </div>
   );
-};
 
 export default AnchorTable;
 
