@@ -2,7 +2,7 @@
  * Top Movers (24h) API Client
  * Ranks Stellar assets by 24h percent change (price or volume), alongside
  * new-holder count. Backed by `GET /api/v1/rankings/top-movers`
- * (Stellar-Insightss/backend#33).
+ * (Stellar-Analysis/backend#33).
  */
 import { logger } from "@/lib/logger";
 import { config } from "@/config";

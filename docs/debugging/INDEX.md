@@ -5,7 +5,7 @@ This directory consolidates the documentation deliverables for
 plus the diagnostic-tooling code that lives behind the [`SI_DEBUG`] gate in
 the Rust backend.
 
-[issue-104]: https://github.com/Stellar-Insightss/Stellar-inights/issues/104
+[issue-104]: https://github.com/Stellar-Analysis/frontend/issues/104
 [`SI_DEBUG`]: ../../backend/src/debug/mod.rs
 
 ## Scope by assignee

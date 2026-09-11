@@ -1,6 +1,6 @@
 /**
  * Soroban analytics API client.
- * Backed by backend endpoints from Stellar-Insightss/backend#21–#24:
+ * Backed by backend endpoints from Stellar-Analysis/backend#21–#24:
  *   GET /api/v1/soroban/contract-calls
  *   GET /api/v1/soroban/top-contracts
  *   GET /api/v1/soroban/new-deployments

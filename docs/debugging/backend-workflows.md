@@ -6,7 +6,7 @@ A practical field guide for debugging the Stellar Insights Rust backend
 separately and live at [`frontend-workflows.md`](./frontend-workflows.md)
 (pending) and [`mobile-workflows.md`](./mobile-workflows.md) (pending).
 
-[issue-104]: https://github.com/Stellar-Insightss/Stellar-inights/issues/104
+[issue-104]: https://github.com/Stellar-Analysis/frontend/issues/104
 
 ## TL;DR
 

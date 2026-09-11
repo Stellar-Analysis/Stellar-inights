@@ -1,6 +1,6 @@
 /**
  * Network dashboard API client.
- * Backed by Stellar-Insightss/backend#15–#19:
+ * Backed by Stellar-Analysis/backend#15–#19:
  *   GET /api/v1/network/daily-active-accounts → {date, count} (backend#15)
  *   GET /api/v1/network/transactions-per-day → {date, count} (backend#16)
  *   GET /api/v1/network/new-accounts    → {date, count} (backend#18)

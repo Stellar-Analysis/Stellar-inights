@@ -340,7 +340,7 @@ interface QueuedTransaction {
 ## File Structure
 
 ```
-/workspaces/Stellar-inights/
+/workspaces/frontend/
 ├── backend/
 │   ├── src/services/contract.rs              [MODIFIED - Signing implementation]
 │   ├── Cargo.toml                             [MODIFIED - Added dependencies]

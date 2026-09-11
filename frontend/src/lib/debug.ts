@@ -63,7 +63,7 @@ const DISABLED: DebugSnapshot = {
   cache: { queries: 0, mutations: 0, staleQueries: 0 },
   storage: { items: 0, bytesEstimate: 0 },
   docsUrl:
-    'https://github.com/Stellar-Insightss/Stellar-inights/blob/main/docs/debugging-guide.md',
+    'https://github.com/Stellar-Analysis/frontend/blob/main/docs/debugging-guide.md',
 };
 
 /** Returns true when this code is executing in a development bundle. */

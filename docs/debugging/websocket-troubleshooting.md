@@ -5,7 +5,7 @@ for the WebSocket surface area. Read the backend workflows doc first —
 this one only covers the WS-specific bits. Issue context is
 [issue #104][issue-104].
 
-[issue-104]: https://github.com/Stellar-Insightss/Stellar-inights/issues/104
+[issue-104]: https://github.com/Stellar-Analysis/frontend/issues/104
 
 ## TL;DR
 

@@ -1,7 +1,7 @@
 # Smart-contract invariant testing
 
 The Soroban contracts are maintained in the dedicated
-[`Stellar-Insightss/contracts`](https://github.com/Stellar-Insightss/contracts) repository.
+[`Stellar-Analysis/contracts`](https://github.com/Stellar-Analysis/contracts) repository.
 They were intentionally split out of this dashboard repository in commit `05fd5054` so that
 contract deployment, audit, and release controls are isolated from application changes.
 

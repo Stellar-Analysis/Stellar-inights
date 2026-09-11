@@ -1,7 +1,7 @@
 /**
  * Asset Rankings API Client
  * Fetches top Stellar assets ranked by holder count and by trading volume.
- * Backed by `GET /api/v1/rankings/assets` (Stellar-Insightss/backend#39).
+ * Backed by `GET /api/v1/rankings/assets` (Stellar-Analysis/backend#39).
  */
 import { logger } from "@/lib/logger";
 import { config } from "@/config";

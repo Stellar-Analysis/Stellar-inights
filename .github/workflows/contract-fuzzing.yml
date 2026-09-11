@@ -24,8 +24,8 @@ jobs:
         run: |
           test ! -d contracts
           test -f docs/contract-invariants.md
-          grep -q 'Stellar-Insightss/contracts' docs/contract-invariants.md
+          grep -q 'Stellar-Analysis/contracts' docs/contract-invariants.md
       - name: Explain the contract quality gate
         run: |
-          echo 'Property tests, fuzzing, and contract coverage run in Stellar-Insightss/contracts.'
+          echo 'Property tests, fuzzing, and contract coverage run in Stellar-Analysis/contracts.'
           echo 'See docs/contract-invariants.md for the per-contract safety invariants.'

@@ -33,8 +33,8 @@ npm install -g pnpm
 ## 1. Repository
 
 ```bash
-git clone https://github.com/Austinaminu2/Stellar-inights.git
-cd Stellar-inights
+git clone https://github.com/Stellar-Analysis/frontend.git
+cd frontend
 ```
 
 - [ ] Clone succeeds without errors
