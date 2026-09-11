@@ -96,7 +96,6 @@ export function Sep24Flow() {
     }
   }, [info, flowKind, assetCode, setValue]);
 
-  const transferServer = selectedAnchor?.transfer_server || transferServer?.trim();
   const assets = info
     ? flowKind === "deposit"
       ? info.deposit

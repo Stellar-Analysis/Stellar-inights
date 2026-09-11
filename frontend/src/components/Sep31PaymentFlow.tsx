@@ -83,8 +83,6 @@ export function Sep31PaymentFlow() {
 
   const isFormValid = isValid && isDirty;
 
-  const transferServer = selectedAnchor?.transfer_server || customTransferServer.trim();
-
   const loadAnchors = useCallback(async () => {
     setLoadingAnchors(true);
     setError(null);
