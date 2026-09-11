@@ -209,7 +209,7 @@ export const __testing__ = {
   readReactQueryCache,
   estimateLocalStorage,
 };
-/* Development-only debug helpers for Stellar Insights frontend.
+/* Development-only debug helpers for Stellar Analysis frontend.
  *
  * All exported functions are no-ops (return null) in production.
  * They must never be relied on for business logic.

@@ -120,7 +120,7 @@ export const ProgressiveWebApp: React.FC<ProgressiveWebAppProps> = ({
           <Download className="w-5 h-5 text-blue-600 dark:text-blue-400 flex-shrink-0 mt-0.5" />
           <div className="flex-1 min-w-0">
             <p className="text-sm font-medium text-blue-900 dark:text-blue-200">
-              Install Stellar Insights
+              Install Stellar Analysis
             </p>
             <p className="text-sm text-blue-700 dark:text-blue-300 mt-1">
               Get instant access to analytics with offline support and faster loading.
@@ -166,7 +166,7 @@ export const ProgressiveWebApp: React.FC<ProgressiveWebAppProps> = ({
               Update Available
             </p>
             <p className="text-sm text-amber-700 dark:text-amber-300 mt-1">
-              A new version of Stellar Insights is ready to install.
+              A new version of Stellar Analysis is ready to install.
             </p>
             <div className="flex gap-2 mt-3">
               <Button
@@ -231,7 +231,7 @@ export const ProgressiveWebApp: React.FC<ProgressiveWebAppProps> = ({
               App Installed
             </p>
             <p className="text-sm text-emerald-700 dark:text-emerald-300 mt-1">
-              Stellar Insights is installed and ready to use offline.
+              Stellar Analysis is installed and ready to use offline.
             </p>
           </div>
         </div>

@@ -1,5 +1,5 @@
 /**
- * WebSocket client for real-time updates from the Stellar Insights backend
+ * WebSocket client for real-time updates from the Stellar Analysis backend
  */
 import { logger } from "@/lib/logger";
 import { config } from "@/config";

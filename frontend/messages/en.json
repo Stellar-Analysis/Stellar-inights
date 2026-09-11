@@ -10,12 +10,12 @@
     "refresh": "Refresh"
   },
   "metadata": {
-    "title": "Stellar Insights - Payment Network Intelligence",
+    "title": "Stellar Analysis - Payment Network Intelligence",
     "description": "Institutional-grade insights into Stellar payment network performance. Predict success, optimize routing, and monitor liquidity."
   },
   "layout": {
     "sidebar": {
-      "stellarInsights": "INSIGHTS",
+      "stellarInsights": "ANALYSIS",
       "groups": {
         "overview": "Overview",
         "assets": "Assets",
@@ -71,10 +71,10 @@
     "aboutUs": "About Us",
     "howToUse": "How to Use",
     "contactUs": "Contact Us",
-    "learnAbout": "Learn about Stellar Insights",
+    "learnAbout": "Learn about Stellar Analysis",
     "getStarted": "Get started with our platform",
     "reachOut": "Reach out to our team",
-    "stellarInsights": "Stellar Insights",
+    "stellarInsights": "Stellar Analysis",
     "toggleMenu": "Toggle navigation menu"
   },
   "home": {
@@ -82,7 +82,7 @@
       "liveBadge": "Live Network Intelligence Active",
       "title": "QUANTIFYING",
       "titleHighlight": "STELLAR NETWORK TRUST",
-      "subtitle": "Stellar Insights provides institutional-grade telemetry for the Stellar payment network. Move beyond transaction counting; analyze liquidity depth, corridor reliability, and settlement finality in real-time.",
+      "subtitle": "Stellar Analysis provides institutional-grade telemetry for the Stellar payment network. Move beyond transaction counting; analyze liquidity depth, corridor reliability, and settlement finality in real-time.",
       "enterTerminal": "Enter Terminal",
       "connectIdentity": "Connect Identity",
       "initializing": "Initializing..."
@@ -110,12 +110,12 @@
     },
     "cta": {
       "title": "Ready to integrate network intelligence?",
-      "subtitle": "Join the forward-thinking anchors and wallets already using Stellar Insights to optimize their liquidity management and payment reliability.",
+      "subtitle": "Join the forward-thinking anchors and wallets already using Stellar Analysis to optimize their liquidity management and payment reliability.",
       "launchTerminal": "Launch Terminal",
       "readSpec": "Read Specification"
     },
     "footer": {
-      "stellarInsights": "Stellar Insights",
+      "stellarInsights": "Stellar Analysis",
       "networkStatus": "Network Status",
       "apiKeys": "API Keys",
       "governance": "Governance",
