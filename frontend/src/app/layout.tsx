@@ -7,13 +7,13 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   userScalable: false,
-  themeColor: "#6366f1",
+  themeColor: "#080907",
 };
 
 export const metadata: Metadata = {
-  title: "Stellar Insights - Payment Network Intelligence",
+  title: "Stellar Analysis - Payment Network Intelligence",
   description:
-    "Institutional-grade insights into Stellar payment network performance. Predict success, optimize routing, and monitor liquidity.",
+    "A living atlas of Stellar payment flows, liquidity, settlement, and trust.",
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,

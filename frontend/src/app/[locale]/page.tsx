@@ -1,201 +1,51 @@
-"use client";
-
 import { Link } from "@/i18n/navigation";
-import { useTranslations } from "next-intl";
-import {
-  TrendingUp,
-  Shield,
-  Activity,
-  ChevronRight,
-  Globe,
-  Database,
-} from "lucide-react";
-import { useWallet } from "@/components/lib/wallet-context";
-import { HomeStatsTiles } from "@/components/dashboard/HomeStatsTiles";
-import { TopAssetsCard } from "@/components/dashboard/TopAssetsCard";
-import { useTopMovers } from "@/hooks/useTopMovers";
-import { useHomeStats } from "@/hooks/useHomeStats";
+import { ArrowUpRight, CircleDot, Compass, ScanLine, ShieldCheck } from "lucide-react";
+
+const signals = [
+  ["SETTLEMENT VELOCITY", "98.4%", "STABLE"],
+  ["ACTIVE CORRIDORS", "142", "TRACKED"],
+  ["LIQUIDITY DEPTH", "$2.8B", "OBSERVED"],
+];
 
 export default function Home() {
-  const { isConnected, connectWallet, isConnecting } = useWallet();
-  const t = useTranslations("home");
-  const { data: movers, loading: moversLoading, error: moversError } = useTopMovers(5);
-  const homeStats = useHomeStats();
-
-  const topMoversAssets = movers.map((asset) => ({
-    asset: asset.symbol,
-    volume: asset.volume24h,
-    tvl: asset.volume24h,
-    price: asset.price,
-    change: asset.change24h,
-    newHolders24h: asset.newHolders24h,
-  }));
-
   return (
-    <main className="space-y-24 pb-20">
-      {/* Hero Section - Data First */}
-      <section aria-labelledby="hero-heading" className="relative pt-12">
-        <div className="max-w-5xl">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 border border-accent/20 mb-8 animate-pulse-slow" role="status" aria-live="polite">
-            <Activity className="w-4 h-4 text-accent" aria-hidden="true" />
-            <span className="text-xs font-semibold text-accent uppercase tracking-wider">
-              {t("hero.liveBadge")}
-            </span>
-          </div>
+    <main data-landing className="stellar-landing -mx-4 -mt-4 min-h-[calc(100vh-2rem)] overflow-hidden md:-mx-8 md:-mt-8">
+      <header className="relative z-10 flex items-center justify-between border-b border-landing-line px-6 py-5 md:px-12">
+        <Link href="/" className="flex items-center gap-3 text-sm font-semibold tracking-[0.22em] text-landing-ink">
+          <span className="flex size-8 items-center justify-center border border-landing-gold text-landing-gold"><CircleDot className="size-4" /></span>
+          STELLAR ANALYSIS
+        </Link>
+        <div className="hidden items-center gap-8 text-[10px] font-mono uppercase tracking-[0.24em] text-landing-muted md:flex">
+          <span>NETWORK / 01</span><span>INTELLIGENCE / 02</span><span>ARCHIVE / 03</span>
+        </div>
+        <Link href="/dashboard" className="border border-landing-line px-4 py-2 text-[10px] font-mono uppercase tracking-[0.2em] text-landing-ink transition-colors hover:border-landing-gold hover:text-landing-gold">Open console</Link>
+      </header>
 
-          <h1 id="hero-heading" className="text-6xl md:text-7xl font-extrabold tracking-tighter leading-[1.1] mb-8">
-            {t("hero.title")} <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-blue-400">
-              {t("hero.titleHighlight")}
-            </span>
-          </h1>
-
-          <p className="text-xl text-muted-foreground max-w-2xl mb-10 leading-relaxed">
-            {t("hero.subtitle")}
-          </p>
-
-          <div className="flex flex-wrap gap-4">
-            <Link
-              href="/dashboard"
-              className="px-8 py-4 bg-accent text-white rounded-xl font-bold hover:glow-accent transition-all flex items-center gap-2 group"
-            >
-              {t("hero.enterTerminal")}{" "}
-              <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Link>
-            {!isConnected && (
-              <button
-                onClick={connectWallet}
-                disabled={isConnecting}
-                className="px-8 py-4 glass text-foreground rounded-xl font-bold hover:bg-white/10 transition-all border-border"
-              >
-                {isConnecting ? t("hero.initializing") : t("hero.connectIdentity")}
-              </button>
-            )}
+      <section className="relative flex min-h-[590px] items-center px-6 py-20 md:px-12 lg:min-h-[680px] lg:px-24">
+        <div className="stellar-dune" aria-hidden="true" />
+        <div className="relative z-10 max-w-3xl">
+          <p className="mb-8 flex items-center gap-3 text-[10px] font-mono uppercase tracking-[0.35em] text-landing-gold"><ScanLine className="size-4" /> Field intelligence for the Stellar network</p>
+          <h1 className="max-w-4xl font-serif text-6xl leading-[0.92] tracking-[-0.06em] text-landing-ink md:text-8xl lg:text-[9.5rem]">Read the<br /><em className="text-landing-gold">signal.</em></h1>
+          <p className="mt-10 max-w-xl text-base leading-7 text-landing-muted md:text-lg">Stellar Analysis turns a living payment network into a navigable map of liquidity, settlement, and trust. See the movement beneath the surface.</p>
+          <div className="mt-10 flex flex-wrap items-center gap-4">
+            <Link href="/dashboard" className="group inline-flex items-center gap-3 bg-landing-gold px-6 py-4 text-xs font-semibold uppercase tracking-[0.16em] text-landing-night transition-transform hover:-translate-y-1">In-depth analysis <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" /></Link>
+            <Link href="/rankings" className="inline-flex items-center gap-2 border border-landing-line px-6 py-4 text-xs font-semibold uppercase tracking-[0.16em] text-landing-ink transition-colors hover:border-landing-gold">Explore rankings</Link>
           </div>
         </div>
+        <div className="absolute bottom-10 right-8 hidden max-w-[190px] text-right text-[10px] font-mono uppercase leading-5 tracking-[0.18em] text-landing-muted lg:block">A living atlas of<br />payments in motion.<br /><span className="text-landing-gold">Est. 2024 // v1.0</span></div>
       </section>
 
-      {/* Live Intelligence Strip */}
-      <HomeStatsTiles {...homeStats} t={t} />
-
-      <section className="rounded-[2rem] border border-border/50 bg-background/50 p-6 shadow-sm">
-        <div className="mb-4 flex items-center justify-between gap-4">
-          <div>
-            <p className="text-[10px] font-mono uppercase tracking-[0.3em] text-accent">
-              {t("topMovers.title")}
-            </p>
-            <h2 className="text-2xl font-semibold tracking-tight">{t("topMovers.heading")}</h2>
-          </div>
-          {!moversLoading && !moversError && (
-            <span className="rounded-full border border-accent/20 bg-accent/10 px-3 py-1 text-xs font-medium text-accent">
-              {t("topMovers.live" )}
-            </span>
-          )}
-        </div>
-
-        {moversLoading ? (
-          <div className="rounded-xl border border-dashed border-border/60 p-8 text-sm text-muted-foreground">
-            {t("topMovers.loading")}
-          </div>
-        ) : moversError ? (
-          <div className="rounded-xl border border-dashed border-border/60 p-8 text-sm text-muted-foreground">
-            {moversError}
-          </div>
-        ) : topMoversAssets.length > 0 ? (
-          <TopAssetsCard assets={topMoversAssets} mode="top-movers" title={t("topMovers.heading")} />
-        ) : (
-          <div className="rounded-xl border border-dashed border-border/60 p-8 text-sm text-muted-foreground">
-            {t("topMovers.empty")}
-          </div>
-        )}
+      <section className="relative z-10 grid border-t border-landing-line md:grid-cols-3">
+        {signals.map(([label, value, status]) => <div key={label} className="flex items-end justify-between border-b border-landing-line px-6 py-8 md:border-b-0 md:border-r md:px-12"><div><p className="text-[10px] font-mono tracking-[0.24em] text-landing-muted">{label}</p><p className="mt-3 font-serif text-4xl text-landing-ink">{value}</p></div><span className="mb-1 text-[9px] font-mono tracking-[0.18em] text-landing-gold">{status}</span></div>)}
       </section>
 
-      {/* Industrial Capabilities */}
-      <section className="grid md:grid-cols-3 gap-8">
-        <div className="space-y-4">
-          <div className="w-12 h-12 rounded-xl glass flex items-center justify-center text-accent mb-6">
-            <Globe className="w-6 h-6" />
-          </div>
-          <h3 className="text-2xl font-bold underline decoration-accent/30 underline-offset-8">
-            {t("capabilities.globalCorridors")}
-          </h3>
-          <p className="text-muted-foreground leading-relaxed">
-            {t("capabilities.globalCorridorsDesc")}
-          </p>
-        </div>
-
-        <div className="space-y-4">
-          <div className="w-12 h-12 rounded-xl glass flex items-center justify-center text-accent mb-6">
-            <Database className="w-6 h-6" />
-          </div>
-          <h3 className="text-2xl font-bold underline decoration-accent/30 underline-offset-8">
-            {t("capabilities.deepTelemetry")}
-          </h3>
-          <p className="text-muted-foreground leading-relaxed">
-            {t("capabilities.deepTelemetryDesc")}
-          </p>
-        </div>
-
-        <div className="space-y-4">
-          <div className="w-12 h-12 rounded-xl glass flex items-center justify-center text-accent mb-6">
-            <Shield className="w-6 h-6" />
-          </div>
-          <h3 className="text-2xl font-bold underline decoration-accent/30 underline-offset-8">
-            {t("capabilities.predictiveTrust")}
-          </h3>
-          <p className="text-muted-foreground leading-relaxed">
-            {t("capabilities.predictiveTrustDesc")}
-          </p>
-        </div>
+      <section className="relative z-10 flex flex-col gap-10 border-t border-landing-line px-6 py-16 md:flex-row md:items-end md:justify-between md:px-12 lg:px-24">
+        <div className="max-w-xl"><p className="text-[10px] font-mono uppercase tracking-[0.3em] text-landing-gold">The observatory</p><h2 className="mt-5 font-serif text-4xl leading-tight text-landing-ink md:text-5xl">Every corridor tells a story.</h2></div>
+        <div className="max-w-md text-sm leading-6 text-landing-muted"><p>Follow the routes, anchors, and liquidity pools shaping global settlement. Stellar Analysis keeps the instruments close and the conclusions clear.</p><div className="mt-8 flex items-center gap-3 text-xs uppercase tracking-[0.16em] text-landing-ink"><ShieldCheck className="size-4 text-landing-gold" /> Auditable by design</div></div>
       </section>
 
-      {/* Bottom CTA */}
-      <section className="glass-card p-12 rounded-[2rem] border border-accent/20 overflow-hidden relative group">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-accent/20 rounded-full blur-[80px] -z-10 group-hover:bg-accent/30 transition-colors" />
-        <div className="max-w-2xl">
-          <h2 className="text-4xl font-bold mb-6 tracking-tight">
-            {t("cta.title")}
-          </h2>
-          <p className="text-lg text-muted-foreground mb-10">{t("cta.subtitle")}</p>
-          <div className="flex gap-4">
-            <Link
-              href="/dashboard"
-              className="px-8 py-4 bg-accent text-white rounded-xl font-bold hover:scale-105 transition-transform"
-            >
-              {t("cta.launchTerminal")}
-            </Link>
-            <button className="px-8 py-4 glass text-foreground rounded-xl font-bold hover:bg-white/10 transition-all">
-              {t("cta.readSpec")}
-            </button>
-          </div>
-        </div>
-      </section>
-
-      <footer className="pt-12 border-t border-border flex flex-col md:flex-row justify-between items-center gap-6">
-        <div className="flex items-center gap-2">
-          <div className="w-6 h-6 bg-accent rounded flex items-center justify-center">
-            <TrendingUp className="w-4 h-4 text-white" />
-          </div>
-          <span className="font-bold tracking-tight">{t("footer.stellarInsights")}</span>
-          <span className="hidden md:inline text-xs text-muted-foreground/70">
-            {t("footer.tagline")}
-          </span>
-        </div>
-        <div className="flex gap-8 text-sm text-muted-foreground">
-          <a href="#" className="hover:text-foreground transition-colors">
-            {t("footer.networkStatus")}
-          </a>
-          <a href="#" className="hover:text-foreground transition-colors">
-            {t("footer.apiKeys")}
-          </a>
-          <a href="#" className="hover:text-foreground transition-colors">
-            {t("footer.governance")}
-          </a>
-        </div>
-        <p className="text-xs text-muted-foreground/50 font-mono">
-          {t("footer.copyright")}
-        </p>
-      </footer>
+      <footer className="relative z-10 flex flex-col gap-4 border-t border-landing-line px-6 py-6 text-[10px] font-mono uppercase tracking-[0.2em] text-landing-muted md:flex-row md:items-center md:justify-between md:px-12"><span>Stellar Analysis / Payment network intelligence</span><span className="flex items-center gap-2"><Compass className="size-3 text-landing-gold" /> Signal is everywhere</span></footer>
     </main>
   );
 }
+
