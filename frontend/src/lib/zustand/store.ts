@@ -364,7 +364,7 @@ export const useAppStore = create<AppState & AppActions>()(
       }
     ),
     {
-      name: 'Stellar Insights App Store',
+      name: 'Stellar Analysis App Store',
     }
   )
 );

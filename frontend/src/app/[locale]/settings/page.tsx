@@ -57,7 +57,7 @@ export default function SettingsPage() {
           <OfflineStatusBadge />
         </div>
         <p className="text-sm text-muted-foreground">
-          Install Stellar Insights as an app for instant access and offline support.
+          Install Stellar Analysis as an app for instant access and offline support.
           Cached data remains available for up to 24 hours without a connection.
         </p>
         <ProgressiveWebApp

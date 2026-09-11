@@ -1,4 +1,4 @@
-# 🖥️ Stellar Insights — Frontend
+# 🖥️ Stellar Analysis — Frontend
 
 ### _the pretty half of Stellar Analysis_ ✨
 

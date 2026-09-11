@@ -374,7 +374,7 @@ const CodeExamples = () => {
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-2">API Code Examples</h1>
         <p className="text-muted-foreground dark:text-gray-300">
-          Run and copy code examples for the Stellar Insights API
+          Run and copy code examples for the Stellar Analysis API
         </p>
       </div>
 

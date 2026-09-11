@@ -22,7 +22,7 @@ function buildShareText(asset: Asset): string {
     const changeText = typeof asset.change24h === 'number'
         ? `is ${asset.change24h >= 0 ? 'up' : 'down'} ${Math.abs(asset.change24h)}%`
         : "hasn't moved much";
-    return `${asset.symbol} ${changeText} on Stellar today. Price: $${asset.price < 1 ? asset.price.toFixed(4) : asset.price.toLocaleString(undefined, { minimumFractionDigits: 2 })} — via Stellar Insights`;
+    return `${asset.symbol} ${changeText} on Stellar today. Price: $${asset.price < 1 ? asset.price.toFixed(4) : asset.price.toLocaleString(undefined, { minimumFractionDigits: 2 })} — via Stellar Analysis`;
 }
 
 const handleShare = async (asset: Asset) => {

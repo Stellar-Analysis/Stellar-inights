@@ -34,14 +34,14 @@
 
 /* ─── Dark Theme (Default) ─────────────────────────────────────────────── */
 :root {
-  --background: #020617;
-  --foreground: #f8fafc;
+  --background: #080907;
+  --foreground: #f2eee3;
 
-  --card: rgba(15, 23, 42, 0.6);
+  --card: rgba(20, 21, 18, 0.82);
   --card-foreground: #f8fafc;
 
-  --accent: #6366f1;
-  --accent-foreground: #ffffff;
+  --accent: #d7a84b;
+  --accent-foreground: #080907;
 
   --border: rgba(51, 65, 85, 0.5);
 

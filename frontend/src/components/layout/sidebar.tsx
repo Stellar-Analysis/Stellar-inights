@@ -152,7 +152,7 @@ export function Sidebar({ open, onClose }: SidebarProps = {}) {
         {/* Logo Section */}
         <div className="p-6 flex items-center gap-3">
           <div className="w-8 h-8 bg-accent rounded-lg flex items-center justify-center glow-accent shrink-0" aria-hidden="true">
-            <TrendingUp className="w-5 h-5 text-white" aria-hidden="true" />
+            <TrendingUp className="w-5 h-5 text-background" aria-hidden="true" />
           </div>
           {!collapsed && (
             <span className="text-xl font-bold tracking-tighter text-foreground whitespace-nowrap overflow-hidden">
