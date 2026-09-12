@@ -116,6 +116,32 @@ function CorridorsPageContent() {
     fetchCorridors();
   }, [timePeriod, sortBy]);
 
+  // Live-tick simulation: nudges each corridor's numbers by a small bounded
+  // random-walk step every few seconds, the same way real telemetry would
+  // move between actual RPC polls, rather than sitting static between the
+  // periodic full refetches above.
+  useEffect(() => {
+    const id = setInterval(() => {
+      setCorridors((prev) =>
+        prev.map((c) => {
+          const walk = (value: number, pct: number, decimals: number) => {
+            const next = value * (1 + (Math.random() * 2 - 1) * pct);
+            const factor = 10 ** decimals;
+            return Math.round(next * factor) / factor;
+          };
+          return {
+            ...c,
+            success_rate: Math.min(100, walk(c.success_rate, 0.003, 1)),
+            health_score: Math.min(100, Math.max(0, walk(c.health_score, 0.004, 0))),
+            liquidity_volume_24h_usd: walk(c.liquidity_volume_24h_usd, 0.01, 0),
+          };
+        }),
+      );
+    }, 3200);
+
+    return () => clearInterval(id);
+  }, []);
+
   useEffect(() => {
     async function fetchInsights() {
       setInsightsLoading(true);
