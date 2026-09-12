@@ -133,8 +133,8 @@ export function ContractCallsChart({
           >
             <defs>
               <linearGradient id="colorContractCalls" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#6366f1" stopOpacity={0.35} />
-                <stop offset="95%" stopColor="#6366f1" stopOpacity={0} />
+                <stop offset="5%" stopColor="#d7a84b" stopOpacity={0.35} />
+                <stop offset="95%" stopColor="#d7a84b" stopOpacity={0} />
               </linearGradient>
             </defs>
             <CartesianGrid
@@ -176,13 +176,13 @@ export function ContractCallsChart({
             <Area
               type="monotone"
               dataKey="count"
-              stroke="#6366f1"
+              stroke="#d7a84b"
               strokeWidth={2.5}
               fill="url(#colorContractCalls)"
               name="Events"
               activeDot={{
                 r: 4,
-                fill: "#6366f1",
+                fill: "#d7a84b",
                 stroke: "#fff",
                 strokeWidth: 2,
               }}

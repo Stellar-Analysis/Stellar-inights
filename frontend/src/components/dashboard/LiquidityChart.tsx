@@ -50,8 +50,8 @@ export const LiquidityChart: React.FC<LiquidityChartProps> = ({ data }) => {
           >
             <defs>
               <linearGradient id="liquidityFill" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#6366f1" stopOpacity={0.2} />
-                <stop offset="95%" stopColor="#6366f1" stopOpacity={0} />
+                <stop offset="5%" stopColor="#d7a84b" stopOpacity={0.2} />
+                <stop offset="95%" stopColor="#d7a84b" stopOpacity={0} />
               </linearGradient>
             </defs>
             <CartesianGrid
@@ -103,7 +103,7 @@ export const LiquidityChart: React.FC<LiquidityChartProps> = ({ data }) => {
             <Area
               type="monotone"
               dataKey="value"
-              stroke="#6366f1"
+              stroke="#d7a84b"
               strokeWidth={3}
               fillOpacity={1}
               fill="url(#liquidityFill)"

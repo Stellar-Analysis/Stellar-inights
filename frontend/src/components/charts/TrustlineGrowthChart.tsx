@@ -117,8 +117,8 @@ export function TrustlineGrowthChart({
           >
             <defs>
               <linearGradient id="colorTotal" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#6366f1" stopOpacity={0.3} />
-                <stop offset="95%" stopColor="#6366f1" stopOpacity={0} />
+                <stop offset="5%" stopColor="#d7a84b" stopOpacity={0.3} />
+                <stop offset="95%" stopColor="#d7a84b" stopOpacity={0} />
               </linearGradient>
             </defs>
             <CartesianGrid
@@ -158,13 +158,13 @@ export function TrustlineGrowthChart({
               type="monotone"
               dataKey="total"
               name="Total Trustlines"
-              stroke="#6366f1"
+              stroke="#d7a84b"
               strokeWidth={3}
               fillOpacity={1}
               fill="url(#colorTotal)"
               activeDot={{
                 r: 4,
-                fill: "#6366f1",
+                fill: "#d7a84b",
                 stroke: "#fff",
                 strokeWidth: 2,
               }}
@@ -190,7 +190,7 @@ export function TrustlineGrowthChart({
 
       <div className="flex items-center gap-6 mt-6 pt-4 border-t border-white/5">
         <div className="flex items-center gap-2">
-          <div className="w-3 h-3 rounded bg-[#6366f1]" />
+          <div className="w-3 h-3 rounded bg-[#d7a84b]" />
           <span className="text-[10px] font-mono text-muted-foreground uppercase tracking-wider cursor-default">
             Total Trustlines
           </span>

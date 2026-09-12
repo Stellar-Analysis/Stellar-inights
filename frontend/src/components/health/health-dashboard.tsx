@@ -329,12 +329,12 @@ const HealthDashboard = () => {
                         >
                           <stop
                             offset="5%"
-                            stopColor="#6366f1"
+                            stopColor="#d7a84b"
                             stopOpacity={0.3}
                           />
                           <stop
                             offset="95%"
-                            stopColor="#6366f1"
+                            stopColor="#d7a84b"
                             stopOpacity={0}
                           />
                         </linearGradient>
@@ -346,12 +346,12 @@ const HealthDashboard = () => {
                           fontSize: "10px",
                           fontFamily: "monospace",
                         }}
-                        itemStyle={{ color: "#6366f1" }}
+                        itemStyle={{ color: "#d7a84b" }}
                       />
                       <Area
                         type="monotone"
                         dataKey="score"
-                        stroke="#6366f1"
+                        stroke="#d7a84b"
                         fillOpacity={1}
                         fill="url(#colorScore)"
                         strokeWidth={2}

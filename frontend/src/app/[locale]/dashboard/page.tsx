@@ -226,7 +226,7 @@ export default function DashboardPage() {
           <div className="text-[10px] font-mono text-accent uppercase tracking-[0.2em] mb-2">
             {t("intelligenceTerminal")}
           </div>
-          <h2 className="text-4xl font-black tracking-tighter uppercase italic">
+          <h2 className="font-serif text-5xl tracking-tight text-foreground">
             {t("networkOverview")}
           </h2>
         </div>

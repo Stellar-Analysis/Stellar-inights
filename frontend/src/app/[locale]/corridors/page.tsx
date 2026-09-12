@@ -145,7 +145,7 @@ function CorridorsPageContent() {
           <div className="text-[10px] font-mono text-accent uppercase tracking-[0.2em] mb-2">
             Network Routing // 02
           </div>
-          <h2 className="text-4xl font-black tracking-tighter uppercase italic flex items-center gap-3">
+          <h2 className="font-serif text-5xl tracking-tight text-foreground flex items-center gap-3">
             <TrendingUp className="w-8 h-8 text-accent" />
             Payment Corridors
           </h2>
