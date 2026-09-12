@@ -152,7 +152,7 @@ export function Sidebar({ open, onClose }: SidebarProps = {}) {
   return (
     <aside
       aria-label="Sidebar navigation"
-      className={`hidden md:block fixed top-0 left-0 h-screen overflow-y-auto glass border-r border-border transition-all duration-500 z-50 ${collapsed ? "w-20" : "w-64"
+      className={`fixed left-0 top-0 z-50 hidden h-screen overflow-y-auto border-r border-border/70 bg-background/90 text-foreground shadow-[12px_0_40px_rgba(0,0,0,0.18)] backdrop-blur-xl transition-all duration-500 md:block ${collapsed ? "w-20" : "w-64"
         }`}
     >
       <div className="flex flex-col h-full">

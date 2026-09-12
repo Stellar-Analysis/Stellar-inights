@@ -73,7 +73,7 @@ export default async function LocaleLayout({ children, params }: Props) {
                     <ShortcutsInitializer />
                   <div className="flex min-h-screen">
                     <Sidebar />
-                    <main className="flex-1 ml-20 lg:ml-64 transition-all duration-300 relative" tabIndex={-1}>
+                    <main className="terminal-surface relative ml-20 flex-1 transition-all duration-300 lg:ml-64" tabIndex={-1}>
                       <Navbar />
 
                       {/* Background Ambient Glow — same warm gold treatment as the landing page's .stellar-dune */}
