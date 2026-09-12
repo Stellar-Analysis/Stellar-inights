@@ -1,5 +1,6 @@
 import { useEffect, useState, useCallback, useRef } from "react";
 import { useWebSocket } from "./useWebSocket";
+import { useStableCallback } from "./useStableCallback";
 import { logger } from "@/lib/logger";
 import { config } from "@/config";
 import {
@@ -101,6 +102,37 @@ export function useRealtimeCorridors(
     [enablePaymentStream, onCorridorUpdate, onHealthAlert, onNewPayment],
   );
 
+  // Stable identities: useWebSocket's `connect` (and the effect that opens
+  // the socket) is keyed off these callbacks' identity. onOpen in particular
+  // needs `subscribe`, which only exists after this useWebSocket call
+  // returns, so a plain useCallback with a real dependency array can't work
+  // here - a fresh inline function on every render was recreating `connect`
+  // constantly, tearing the socket down and reopening it on every render
+  // during the initial render cascade (dozens of connect/error cycles in
+  // the first couple of seconds, all logged, before things settled).
+  const stableOnOpen = useStableCallback(() => {
+    logger.debug("Connected to corridor WebSocket");
+    // Re-subscribe to all previously subscribed corridors on reconnection
+    const keys = subscribedKeysRef.current;
+    if (keys.length > 0) {
+      const channels = keys.map((key) => `corridor:${key}`);
+      if (enablePaymentStream) {
+        channels.push(...keys.map((key) => `payments:${key}`));
+      }
+      subscribe(channels);
+      logger.debug("Resubscribed to corridors after reconnect:", keys);
+    }
+  });
+  const stableOnClose = useStableCallback(() => {
+    logger.debug("Disconnected from corridor WebSocket");
+  });
+  const stableOnError = useStableCallback((error: Event) => {
+    logger.error("Corridor WebSocket error:", error);
+  });
+  const stableOnStaleData = useStableCallback(() => {
+    logger.warn("Corridor data is stale - consider fetching snapshot");
+  });
+
   const {
     isConnected,
     isConnecting,
@@ -112,28 +144,10 @@ export function useRealtimeCorridors(
   } = useWebSocket(wsUrl, {
     staleDataThreshold: 30000, // 30 seconds without updates = stale
     onMessage: handleMessage,
-    onOpen: () => {
-      logger.debug("Connected to corridor WebSocket");
-      // Re-subscribe to all previously subscribed corridors on reconnection
-      const keys = subscribedKeysRef.current;
-      if (keys.length > 0) {
-        const channels = keys.map((key) => `corridor:${key}`);
-        if (enablePaymentStream) {
-          channels.push(...keys.map((key) => `payments:${key}`));
-        }
-        subscribe(channels);
-        logger.debug("Resubscribed to corridors after reconnect:", keys);
-      }
-    },
-    onClose: () => {
-      logger.debug("Disconnected from corridor WebSocket");
-    },
-    onError: (error) => {
-      logger.error("Corridor WebSocket error:", error);
-    },
-    onStaleData: () => {
-      logger.warn("Corridor data is stale - consider fetching snapshot");
-    },
+    onOpen: stableOnOpen,
+    onClose: stableOnClose,
+    onError: stableOnError,
+    onStaleData: stableOnStaleData,
   });
 
   const subscribeToCorridors = useCallback(

@@ -119,15 +119,22 @@ export function useWebSocket(
           setIsConnecting(false);
         }
 
-        if (shouldReconnectRef.current) {
+        // Once presence has been asserted (no backend reachable within the
+        // fallback window - see that effect), stop scheduling automatic
+        // retries entirely. Retrying forever every `reconnectInterval` was
+        // logging a fresh onerror on every attempt indefinitely - hundreds
+        // of console.error calls over a session, all for a condition
+        // that's already been decided. The exposed reconnect() (the UI's
+        // "Reconnect" button) still works on demand.
+        if (shouldReconnectRef.current && !presenceAssertedRef.current) {
           setConnectionAttempts((prev) => prev + 1);
           reconnectTimeoutRef.current = setTimeout(connect, reconnectInterval);
         }
       };
 
       ws.onerror = (error) => {
-        logger.error("WebSocket error:", error);
         if (!presenceAssertedRef.current) {
+          logger.error("WebSocket error:", error);
           setIsConnecting(false);
         }
         isConnectingRef.current = false;
