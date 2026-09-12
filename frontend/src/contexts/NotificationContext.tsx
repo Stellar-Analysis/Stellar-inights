@@ -20,6 +20,7 @@ import {
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { useNotificationSound } from "@/hooks/useNotificationSound";
 import { useWebSocket } from "@/hooks/useWebSocket";
+import { useStableCallback } from "@/hooks/useStableCallback";
 import { logger } from "@/lib/logger";
 
 const DEFAULT_PREFERENCES: NotificationPreferences = {
@@ -186,18 +187,24 @@ export const NotificationProvider: React.FC<NotificationProviderProps> = ({
     [preferences, isClient],
   );
 
-  const { isConnected, reconnectCount } = useWebSocket({
-    url: websocketUrl,
+  // See useRealtimeCorridors.ts for why these are stable-identity wrappers:
+  // an inline function here recreates useWebSocket's `connect` on every
+  // render, tearing the socket down and reopening it repeatedly.
+  const stableOnOpen = useStableCallback(() => {
+    if (isClient) logger.debug("WebSocket connected for notifications");
+  });
+  const stableOnClose = useStableCallback(() => {
+    if (isClient) logger.debug("WebSocket disconnected");
+  });
+  const stableOnError = useStableCallback((error: Event) => {
+    if (isClient) logger.error("WebSocket error:", error);
+  });
+
+  const { isConnected, connectionAttempts: reconnectCount } = useWebSocket(websocketUrl, {
     onMessage: handleWebSocketMessage,
-    onConnect: () => {
-      if (isClient) logger.debug("WebSocket connected for notifications");
-    },
-    onDisconnect: () => {
-      if (isClient) logger.debug("WebSocket disconnected");
-    },
-    onError: (error) => {
-      if (isClient) logger.error("WebSocket error:", error);
-    },
+    onOpen: stableOnOpen,
+    onClose: stableOnClose,
+    onError: stableOnError,
   });
 
   const dismissToast = useCallback(

@@ -18,7 +18,10 @@ const intlMiddleware = createMiddleware(routing);
 function buildCsp(isProd: boolean): string {
   const directives: string[] = [
     "default-src 'self'",
-    "script-src 'self' 'unsafe-inline'",
+    // 'unsafe-eval' is dev-only: Turbopack/React Fast Refresh use eval() to
+    // reconstruct stack traces across module boundaries. React never calls
+    // eval() in production, so prod keeps the strict policy.
+    `script-src 'self' 'unsafe-inline'${isProd ? "" : " 'unsafe-eval'"}`,
     "style-src 'self' 'unsafe-inline'",
     "img-src 'self' data: blob: https://*.stellar.org",
     "font-src 'self'",

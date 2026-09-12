@@ -119,7 +119,7 @@ export function SettlementLatencyChart({ data }: SettlementLatencyChartProps) {
             <Line
               type="monotone"
               dataKey="median"
-              stroke="#6366f1"
+              stroke="#d7a84b"
               strokeWidth={2}
               dot={false}
               name="Median"

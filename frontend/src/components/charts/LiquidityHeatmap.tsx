@@ -292,7 +292,7 @@ export const LiquidityHeatmap: React.FC<LiquidityHeatmapProps> = ({
               <div className="bg-slate-900/95 backdrop-blur-xl text-white rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] p-5 min-w-[240px] border border-white/10">
                 <div className="flex justify-between items-center mb-4 pb-3 border-b border-white/10">
                   <div className="flex items-center gap-2">
-                    <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse shadow-[0_0_8px_#6366f1]"></div>
+                    <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse shadow-[0_0_8px_#d7a84b]"></div>
                     <span className="font-mono font-black text-[10px] uppercase tracking-tighter">
                       {tooltipData.sourceAsset}{" "}
                       <ArrowRight className="inline w-3 h-3 mx-1 text-muted-foreground" />{" "}

@@ -83,7 +83,7 @@ export function ThemeCustomizer() {
   const { prefs, setPrefs } = useUserPreferences();
 
   // Accent colour stored in user prefs; apply to CSS variable on change
-  const accentColor: string = (prefs as unknown as Record<string, unknown>).accentColor as string ?? "#6366f1";
+  const accentColor: string = (prefs as unknown as Record<string, unknown>).accentColor as string ?? "#d7a84b";
   const fontSize: FontSizeValue = ((prefs as unknown as Record<string, unknown>).fontSize as FontSizeValue) ?? "md";
 
   const applyAccent = (color: string) => {

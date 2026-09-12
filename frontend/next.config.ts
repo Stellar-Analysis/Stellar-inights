@@ -37,7 +37,10 @@ const securityHeaders = [
     key: "Content-Security-Policy",
     value: [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline'",
+      // 'unsafe-eval' is dev-only: Turbopack/React Fast Refresh use eval()
+      // to reconstruct stack traces across module boundaries. React never
+      // calls eval() in production, so the production CSP stays strict.
+      `script-src 'self' 'unsafe-inline'${process.env.NODE_ENV === "development" ? " 'unsafe-eval'" : ""}`,
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' data: blob: https://*.stellar.org",
       "font-src 'self'",

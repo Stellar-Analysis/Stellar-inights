@@ -1,5 +1,6 @@
 import { useEffect, useState, useCallback, useRef } from "react";
 import { useWebSocket } from "./useWebSocket";
+import { useStableCallback } from "./useStableCallback";
 import { logger } from "@/lib/logger";
 import { config } from "@/config";
 import {
@@ -64,6 +65,25 @@ export function useRealtimeAnchors(
     [onAnchorUpdate],
   );
 
+  // See useRealtimeCorridors.ts for why these need to be stable-identity
+  // wrappers rather than inline functions or a dependency-array useCallback.
+  const stableOnOpen = useStableCallback(() => {
+    logger.debug("Connected to anchor WebSocket");
+    // Re-subscribe to all previously subscribed anchors on reconnection
+    const ids = subscribedIdsRef.current;
+    if (ids.length > 0) {
+      const channels = ids.map((id) => `anchor:${id}`);
+      subscribe(channels);
+      logger.debug("Resubscribed to anchors after reconnect:", ids);
+    }
+  });
+  const stableOnClose = useStableCallback(() => {
+    logger.debug("Disconnected from anchor WebSocket");
+  });
+  const stableOnError = useStableCallback((error: Event) => {
+    logger.error("Anchor WebSocket error:", error);
+  });
+
   const {
     isConnected,
     isConnecting,
@@ -73,22 +93,9 @@ export function useRealtimeAnchors(
     reconnect,
   } = useWebSocket(wsUrl, {
     onMessage: handleMessage,
-    onOpen: () => {
-      logger.debug("Connected to anchor WebSocket");
-      // Re-subscribe to all previously subscribed anchors on reconnection
-      const ids = subscribedIdsRef.current;
-      if (ids.length > 0) {
-        const channels = ids.map((id) => `anchor:${id}`);
-        subscribe(channels);
-        logger.debug("Resubscribed to anchors after reconnect:", ids);
-      }
-    },
-    onClose: () => {
-      logger.debug("Disconnected from anchor WebSocket");
-    },
-    onError: (error) => {
-      logger.error("Anchor WebSocket error:", error);
-    },
+    onOpen: stableOnOpen,
+    onClose: stableOnClose,
+    onError: stableOnError,
   });
 
   const subscribeToAnchors = useCallback(

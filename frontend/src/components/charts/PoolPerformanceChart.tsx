@@ -54,7 +54,7 @@ export function PoolPerformanceChart({
     { key: string; color: string; label: string }
   > = {
     apy: { key: "apy", color: "#10b981", label: "APY %" },
-    volume: { key: "volume", color: "#6366f1", label: "Volume" },
+    volume: { key: "volume", color: "#d7a84b", label: "Volume" },
     fees: { key: "fees", color: "#f59e0b", label: "Fees" },
     tvl: { key: "tvl", color: "#06b6d4", label: "TVL" },
   };

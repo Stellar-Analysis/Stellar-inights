@@ -164,6 +164,63 @@ export default function DashboardPage() {
     })();
   }, [fetchDashboard]);
 
+  // Live-tick simulation: no backend is hosted, so the 30s refresh above is
+  // the only thing that would otherwise move the numbers. This nudges the
+  // KPIs and the tail of each chart every few seconds with a small bounded
+  // random-walk step (not a full re-randomization) so the dashboard reads
+  // as continuously-arriving telemetry between refreshes, the same way a
+  // live RPC feed would look.
+  useEffect(() => {
+    const id = setInterval(() => {
+      setData((prev) => {
+        if (!prev) return prev;
+        const walk = (value: number, pct: number, decimals: number) => {
+          const next = value * (1 + (Math.random() * 2 - 1) * pct);
+          const factor = 10 ** decimals;
+          return Math.round(next * factor) / factor;
+        };
+
+        const liquidity = prev.liquidity.length
+          ? [
+              ...prev.liquidity.slice(0, -1),
+              {
+                ...prev.liquidity[prev.liquidity.length - 1],
+                value: walk(prev.liquidity[prev.liquidity.length - 1].value, 0.01, 0),
+              },
+            ]
+          : prev.liquidity;
+
+        const settlement = prev.settlement.length
+          ? [
+              ...prev.settlement.slice(0, -1),
+              {
+                ...prev.settlement[prev.settlement.length - 1],
+                speed: Math.max(0.05, walk(prev.settlement[prev.settlement.length - 1].speed, 0.03, 2)),
+              },
+            ]
+          : prev.settlement;
+
+        return {
+          ...prev,
+          kpi: {
+            successRate: { ...prev.kpi.successRate, value: Math.min(100, walk(prev.kpi.successRate.value, 0.004, 1)) },
+            activeCorridors: prev.kpi.activeCorridors,
+            liquidityDepth: { ...prev.kpi.liquidityDepth, value: walk(prev.kpi.liquidityDepth.value, 0.006, 0) },
+            settlementSpeed: { ...prev.kpi.settlementSpeed, value: Math.max(0.05, walk(prev.kpi.settlementSpeed.value, 0.02, 2)) },
+          },
+          corridors: prev.corridors.map((c) => ({
+            ...c,
+            uptime: Math.min(100, Math.max(0, walk(c.uptime, 0.003, 1))),
+          })),
+          liquidity,
+          settlement,
+        };
+      });
+    }, 2800);
+
+    return () => clearInterval(id);
+  }, []);
+
   if (loading) {
     return (
       <div className="space-y-8">
@@ -226,7 +283,7 @@ export default function DashboardPage() {
           <div className="text-[10px] font-mono text-accent uppercase tracking-[0.2em] mb-2">
             {t("intelligenceTerminal")}
           </div>
-          <h2 className="text-4xl font-black tracking-tighter uppercase italic">
+          <h2 className="font-serif text-5xl tracking-tight text-foreground">
             {t("networkOverview")}
           </h2>
         </div>

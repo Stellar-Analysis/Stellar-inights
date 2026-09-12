@@ -107,7 +107,7 @@ export const SettlementSpeedChart: React.FC<SettlementSpeedChartProps> = ({
                     entry.speed > 5
                       ? "#f43f5e"
                       : entry.speed > 3
-                        ? "#6366f1"
+                        ? "#d7a84b"
                         : "#10b981"
                   }
                   fillOpacity={0.8}
