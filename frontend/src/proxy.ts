@@ -51,6 +51,12 @@ function applySecurityHeaders(response: NextResponse, isProd: boolean): void {
 export default function middleware(request: NextRequest) {
   const isProd = process.env.NODE_ENV === "production";
 
+  if (request.nextUrl.pathname === "/") {
+    const localizedHome = request.nextUrl.clone();
+    localizedHome.pathname = `/${routing.defaultLocale}`;
+    return NextResponse.redirect(localizedHome);
+  }
+
   if (request.nextUrl.pathname.startsWith("/api/")) {
     return handleApiRequest(request, isProd);
   }
