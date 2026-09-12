@@ -312,6 +312,24 @@ body:has(.stellar-landing) nav {
   display: none;
 }
 
+/* Shared Stellar Analysis terminal surface */
+.terminal-surface {
+  font-family: var(--font-sans);
+  letter-spacing: -0.01em;
+}
+
+.terminal-surface h1,
+.terminal-surface h2,
+.terminal-surface h3 {
+  font-family: var(--font-serif);
+  letter-spacing: -0.035em;
+}
+
+.terminal-surface [class*="font-mono"] {
+  font-family: var(--font-mono);
+  letter-spacing: 0.08em;
+}
+
 body:has(.stellar-landing) main.flex-1 {
   margin-left: 0;
 }
@@ -525,7 +543,7 @@ body:has(.stellar-landing) main.flex-1 {
   flex-shrink: 0;
 }
 
-/* ─── Theme Toggle Button ─────────────────────────────────────────────── */
+/* ─── Theme Toggle Button ─────────────────────────────────────��───────── */
 .theme-toggle-btn {
   display: flex;
   align-items: center;

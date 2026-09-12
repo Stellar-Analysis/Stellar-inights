@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from "react";
 import { Menu, Wallet, LogOut } from "lucide-react";
 import { useWallet } from "../lib/wallet-context";
 import { NotificationCenter } from "./notification-center";
+import { useNotifications } from "@/contexts/NotificationContext";
 
 interface HeaderProps {
   onMenuToggle: () => void;
@@ -89,7 +90,7 @@ export function Header({ onMenuToggle, sidebarOpen }: HeaderProps) {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 h-16 bg-white dark:bg-slate-900 border-b border-gray-200 dark:border-slate-700 z-40">
+    <header className="fixed top-0 left-0 right-0 z-40 h-16 border-b border-border/70 bg-background/85 text-foreground backdrop-blur-xl">
       <div className="flex items-center justify-between h-full px-4 sm:px-6">
         {/* Left: Menu Toggle & Logo */}
         <div className="flex items-center gap-4">
