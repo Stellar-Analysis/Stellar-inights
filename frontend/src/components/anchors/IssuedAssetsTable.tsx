@@ -74,7 +74,7 @@ export function IssuedAssetsTable({
                 >
                   <td className="px-6 py-4 font-medium text-white">
                     <div className="flex items-center gap-2">
-                      <div className="w-8 h-8 rounded-full bg-indigo-500/10 flex items-center justify-center text-indigo-400 border border-indigo-500/20 font-bold text-xs">
+                      <div className="w-8 h-8 rounded-full bg-amber-500/10 flex items-center justify-center text-amber-400 border border-amber-500/20 font-bold text-xs">
                         {asset.asset_code.substring(0, 2)}
                       </div>
                       <span>{asset.asset_code}</span>

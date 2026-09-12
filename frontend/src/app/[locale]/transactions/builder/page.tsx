@@ -81,8 +81,8 @@ export default function TransactionsBuilderPage() {
         {/* Header Section */}
         <div className="flex flex-col mb-10">
           <div className="flex items-center gap-3 mb-2">
-            <div className="p-2.5 rounded-xl bg-gradient-to-br from-indigo-500/20 to-purple-500/20 border border-indigo-500/20">
-              <Hexagon className="w-6 h-6 text-indigo-400" />
+            <div className="p-2.5 rounded-xl bg-gradient-to-br from-amber-500/20 to-purple-500/20 border border-amber-500/20">
+              <Hexagon className="w-6 h-6 text-amber-400" />
             </div>
             <h1 className="text-3xl font-extrabold tracking-tight text-white">
               Multi-Sig Workflows

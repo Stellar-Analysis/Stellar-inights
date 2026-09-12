@@ -93,7 +93,7 @@ export function AssetDetailModal({ asset, onClose }: AssetDetailModalProps) {
         <div className="px-6 py-4 border-b border-slate-800 flex justify-between items-center bg-slate-950/30">
           <div className="flex items-center gap-3">
             <div
-              className="w-10 h-10 rounded-full bg-indigo-500/10 flex items-center justify-center text-indigo-400 border border-indigo-500/20 font-bold"
+              className="w-10 h-10 rounded-full bg-amber-500/10 flex items-center justify-center text-amber-400 border border-amber-500/20 font-bold"
               aria-hidden="true"
             >
               {asset.asset_code.substring(0, 2)}
@@ -122,7 +122,7 @@ export function AssetDetailModal({ asset, onClose }: AssetDetailModalProps) {
             {/* Primary Stat Card - Volume */}
             <div className="bg-slate-800/30 border border-slate-700/50 rounded-xl p-5">
               <div className="flex items-center gap-2 text-slate-400 text-sm mb-2">
-                <Activity className="w-4 h-4 text-indigo-400" aria-hidden="true" />
+                <Activity className="w-4 h-4 text-amber-400" aria-hidden="true" />
                 <span id="volume-label">24h Volume</span>
               </div>
               <div

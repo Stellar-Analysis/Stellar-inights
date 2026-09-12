@@ -22,8 +22,9 @@
   --color-warning: var(--warning);
   --color-error: var(--error);
 
-  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
-  --font-serif: Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-sans-loaded), "Inter", system-ui, -apple-system, sans-serif;
+  --font-serif: var(--font-serif-loaded), Georgia, "Times New Roman", serif;
+  --font-mono: var(--font-mono-loaded), ui-monospace, SFMono-Regular, monospace;
 
   --color-landing-night: var(--landing-night);
   --color-landing-ink: var(--landing-ink);
@@ -40,7 +41,7 @@
   --card: rgba(20, 21, 18, 0.82);
   --card-foreground: #f8fafc;
 
-  --accent: #d7a84b;
+  --accent: #d7a84b; /* Unified with the landing page's gold brand accent */
   --accent-foreground: #080907;
 
   --border: rgba(51, 65, 85, 0.5);
@@ -70,7 +71,7 @@
   --glass-card-to: rgba(15, 23, 42, 0.8);
   --glass-card-border: rgba(255, 255, 255, 0.05);
   --glass-card-shadow: rgba(0, 0, 0, 0.8);
-  --glow-accent-shadow: rgba(99, 102, 241, 0.2);
+  --glow-accent-shadow: rgba(215, 168, 75, 0.2);
   --glow-success-shadow: rgba(34, 197, 94, 0.2);
 
   --landing-night: #080907;
@@ -81,28 +82,28 @@
 
   /* Navbar */
   --navbar-scrolled-bg: rgba(2, 6, 23, 0.75);
-  --navbar-scrolled-border: rgba(99, 102, 241, 0.15);
+  --navbar-scrolled-border: rgba(215, 168, 75, 0.15);
   --navbar-scrolled-shadow: rgba(0, 0, 0, 0.4);
   --navbar-link-hover-bg: rgba(255, 255, 255, 0.05);
-  --navbar-link-hover-border: rgba(99, 102, 241, 0.2);
-  --navbar-link-active-bg: rgba(99, 102, 241, 0.1);
-  --navbar-link-active-border: rgba(99, 102, 241, 0.25);
+  --navbar-link-hover-border: rgba(215, 168, 75, 0.2);
+  --navbar-link-active-bg: rgba(215, 168, 75, 0.1);
+  --navbar-link-active-border: rgba(215, 168, 75, 0.25);
   --navbar-hamburger-border: rgba(255, 255, 255, 0.08);
   --navbar-hamburger-bg: rgba(255, 255, 255, 0.03);
-  --navbar-hamburger-hover-bg: rgba(99, 102, 241, 0.12);
+  --navbar-hamburger-hover-bg: rgba(215, 168, 75, 0.12);
   --navbar-mobile-panel-bg: rgba(2, 6, 23, 0.92);
-  --navbar-mobile-panel-border: rgba(99, 102, 241, 0.1);
+  --navbar-mobile-panel-border: rgba(215, 168, 75, 0.1);
   --navbar-mobile-link-hover-bg: rgba(255, 255, 255, 0.04);
-  --navbar-mobile-link-hover-border: rgba(99, 102, 241, 0.15);
-  --navbar-mobile-link-active-bg: rgba(99, 102, 241, 0.1);
-  --navbar-mobile-link-active-border: rgba(99, 102, 241, 0.25);
-  --navbar-mobile-icon-bg: rgba(99, 102, 241, 0.12);
+  --navbar-mobile-link-hover-border: rgba(215, 168, 75, 0.15);
+  --navbar-mobile-link-active-bg: rgba(215, 168, 75, 0.1);
+  --navbar-mobile-link-active-border: rgba(215, 168, 75, 0.25);
+  --navbar-mobile-icon-bg: rgba(215, 168, 75, 0.12);
 
   /* Contact form */
   --contact-input-border: rgba(51, 65, 85, 0.5);
   --contact-input-bg: rgba(15, 23, 42, 0.5);
-  --contact-input-focus-border: rgba(99, 102, 241, 0.5);
-  --contact-input-focus-shadow: rgba(99, 102, 241, 0.1);
+  --contact-input-focus-border: rgba(215, 168, 75, 0.5);
+  --contact-input-focus-shadow: rgba(215, 168, 75, 0.1);
   --contact-option-bg: #0f172a;
 
   /* Sidebar hover */
@@ -118,7 +119,7 @@ html.light,
   --card: rgba(255, 255, 255, 0.85);
   --card-foreground: #0f172a;
 
-  --accent: #4f46e5;
+  --accent: #92400e; /* Unified with the landing page's gold brand accent (amber-800 for AA contrast on light bg) */
   --accent-foreground: #ffffff;
 
   --border: rgba(148, 163, 184, 0.35);
@@ -148,33 +149,33 @@ html.light,
   --glass-card-to: rgba(241, 245, 249, 0.9);
   --glass-card-border: rgba(148, 163, 184, 0.15);
   --glass-card-shadow: rgba(0, 0, 0, 0.08);
-  --glow-accent-shadow: rgba(79, 70, 229, 0.15);
+  --glow-accent-shadow: rgba(146, 64, 14, 0.15);
   --glow-success-shadow: rgba(22, 163, 74, 0.15);
 
   /* Navbar – light */
   --navbar-scrolled-bg: rgba(248, 250, 252, 0.82);
-  --navbar-scrolled-border: rgba(79, 70, 229, 0.12);
+  --navbar-scrolled-border: rgba(146, 64, 14, 0.12);
   --navbar-scrolled-shadow: rgba(0, 0, 0, 0.06);
   --navbar-link-hover-bg: rgba(0, 0, 0, 0.04);
-  --navbar-link-hover-border: rgba(79, 70, 229, 0.18);
-  --navbar-link-active-bg: rgba(79, 70, 229, 0.08);
-  --navbar-link-active-border: rgba(79, 70, 229, 0.22);
+  --navbar-link-hover-border: rgba(146, 64, 14, 0.18);
+  --navbar-link-active-bg: rgba(146, 64, 14, 0.08);
+  --navbar-link-active-border: rgba(146, 64, 14, 0.22);
   --navbar-hamburger-border: rgba(0, 0, 0, 0.08);
   --navbar-hamburger-bg: rgba(0, 0, 0, 0.02);
-  --navbar-hamburger-hover-bg: rgba(79, 70, 229, 0.1);
+  --navbar-hamburger-hover-bg: rgba(146, 64, 14, 0.1);
   --navbar-mobile-panel-bg: rgba(248, 250, 252, 0.96);
-  --navbar-mobile-panel-border: rgba(79, 70, 229, 0.1);
+  --navbar-mobile-panel-border: rgba(146, 64, 14, 0.1);
   --navbar-mobile-link-hover-bg: rgba(0, 0, 0, 0.03);
-  --navbar-mobile-link-hover-border: rgba(79, 70, 229, 0.12);
-  --navbar-mobile-link-active-bg: rgba(79, 70, 229, 0.08);
-  --navbar-mobile-link-active-border: rgba(79, 70, 229, 0.22);
-  --navbar-mobile-icon-bg: rgba(79, 70, 229, 0.1);
+  --navbar-mobile-link-hover-border: rgba(146, 64, 14, 0.12);
+  --navbar-mobile-link-active-bg: rgba(146, 64, 14, 0.08);
+  --navbar-mobile-link-active-border: rgba(146, 64, 14, 0.22);
+  --navbar-mobile-icon-bg: rgba(146, 64, 14, 0.1);
 
   /* Contact form – light */
   --contact-input-border: rgba(148, 163, 184, 0.4);
   --contact-input-bg: rgba(255, 255, 255, 0.7);
-  --contact-input-focus-border: rgba(79, 70, 229, 0.5);
-  --contact-input-focus-shadow: rgba(79, 70, 229, 0.08);
+  --contact-input-focus-border: rgba(146, 64, 14, 0.5);
+  --contact-input-focus-shadow: rgba(146, 64, 14, 0.08);
   --contact-option-bg: #ffffff;
 
   /* Sidebar hover – light */
@@ -284,6 +285,26 @@ body {
   background: radial-gradient(circle at 35% 35%, rgba(215, 168, 75, 0.3), rgba(215, 168, 75, 0.08) 42%, transparent 70%);
   opacity: 0.9;
   pointer-events: none;
+  animation: dune-breathe 10s ease-in-out infinite;
+}
+
+@keyframes dune-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+
+  50% {
+    transform: scale(1.05);
+    opacity: 0.75;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stellar-dune {
+    animation: none;
+  }
 }
 
 body:has(.stellar-landing) aside,
@@ -396,7 +417,7 @@ body:has(.stellar-landing) main.flex-1 {
   color: var(--accent);
   background: var(--navbar-link-active-bg);
   border-color: var(--navbar-link-active-border);
-  box-shadow: 0 0 12px rgba(99, 102, 241, 0.15);
+  box-shadow: 0 0 12px rgba(215, 168, 75, 0.15);
 }
 
 .navbar-link-indicator {
@@ -405,7 +426,7 @@ body:has(.stellar-landing) main.flex-1 {
   height: 5px;
   border-radius: 50%;
   background: var(--accent);
-  box-shadow: 0 0 6px rgba(99, 102, 241, 0.8);
+  box-shadow: 0 0 6px rgba(215, 168, 75, 0.8);
   margin-left: 2px;
 }
 

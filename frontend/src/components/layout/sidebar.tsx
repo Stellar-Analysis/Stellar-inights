@@ -134,6 +134,10 @@ interface SidebarProps {
   onClose?: () => void;
 }
 
+// Groups other than "overview" start collapsed to keep the sidebar short;
+// a group auto-expands itself if the current page lives inside it.
+const DEFAULT_EXPANDED: Record<string, boolean> = { overview: true };
+
 export function Sidebar({ open, onClose }: SidebarProps = {}) {
   const pathname = usePathname();
   const t = useTranslations("layout.sidebar");
@@ -141,6 +145,9 @@ export function Sidebar({ open, onClose }: SidebarProps = {}) {
   const collapsed = prefs.sidebarCollapsed;
   const setCollapsed = (val: boolean) => setPrefs({ sidebarCollapsed: val });
   const allPaths = navGroups.flatMap((group) => group.items.map((item) => item.path));
+  const [expandedGroups, setExpandedGroups] = React.useState(DEFAULT_EXPANDED);
+  const toggleGroup = (key: string) =>
+    setExpandedGroups((prev) => ({ ...prev, [key]: !prev[key] }));
 
   return (
     <aside
@@ -155,9 +162,9 @@ export function Sidebar({ open, onClose }: SidebarProps = {}) {
             <TrendingUp className="w-5 h-5 text-background" aria-hidden="true" />
           </div>
           {!collapsed && (
-            <span className="text-xl font-bold tracking-tighter text-foreground whitespace-nowrap overflow-hidden">
+            <span className="font-serif text-lg font-semibold tracking-tight text-foreground whitespace-nowrap">
               STELLAR
-              <span className="text-accent underline decoration-accent/30">
+              <span className="text-accent">
                 {" "}{t("stellarInsights")}
               </span>
             </span>
@@ -167,16 +174,38 @@ export function Sidebar({ open, onClose }: SidebarProps = {}) {
         {/* Navigation Section */}
         <nav aria-label="Primary navigation" className="flex-1 px-4 py-8 overflow-y-auto">
           <ul role="list" className="space-y-6 m-0 p-0 list-none">
-            {navGroups.map((group) => (
+            {navGroups.map((group) => {
+              const groupHasActiveItem = group.items.some(
+                (item) => isNavActive(pathname, item.path, allPaths),
+              );
+              const isExpanded = collapsed || groupHasActiveItem || !!expandedGroups[group.key];
+
+              return (
               <li key={group.key}>
                 {!collapsed && (
-                  <div
-                    id={`nav-group-${group.key}`}
-                    className="px-4 mb-2 text-[10px] font-mono text-muted-foreground/70 uppercase tracking-[0.2em]"
-                  >
-                    {t(`groups.${group.key}`)}
-                  </div>
+                  group.key === "overview" ? (
+                    <div
+                      id={`nav-group-${group.key}`}
+                      className="px-4 mb-2 text-[10px] font-mono text-muted-foreground/70 uppercase tracking-[0.2em]"
+                    >
+                      {t(`groups.${group.key}`)}
+                    </div>
+                  ) : (
+                    <button
+                      id={`nav-group-${group.key}`}
+                      onClick={() => toggleGroup(group.key)}
+                      aria-expanded={isExpanded}
+                      className="w-full flex items-center justify-between px-4 mb-2 text-[10px] font-mono text-muted-foreground/70 uppercase tracking-[0.2em] hover:text-muted-foreground transition-colors"
+                    >
+                      {t(`groups.${group.key}`)}
+                      <ChevronRight
+                        className={`w-3 h-3 shrink-0 transition-transform duration-200 ${isExpanded ? "rotate-90" : ""}`}
+                        aria-hidden="true"
+                      />
+                    </button>
+                  )
                 )}
+                {isExpanded && (
                 <ul
                   role="list"
                   aria-labelledby={collapsed ? undefined : `nav-group-${group.key}`}
@@ -207,15 +236,17 @@ export function Sidebar({ open, onClose }: SidebarProps = {}) {
                             </span>
                           )}
                           {isActive && !collapsed && (
-                            <div className="ml-auto w-1 h-4 rounded-full bg-accent shadow-[0_0_8px_rgba(99,102,241,0.6)]" aria-hidden="true" />
+                            <div className="ml-auto w-1 h-4 rounded-full bg-accent shadow-[0_0_8px_rgba(215,168,75,0.6)]" aria-hidden="true" />
                           )}
                         </Link>
                       </li>
                     );
                   })}
                 </ul>
+                )}
               </li>
-            ))}
+              );
+            })}
           </ul>
         </nav>
 

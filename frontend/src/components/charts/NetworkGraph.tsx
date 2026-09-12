@@ -61,7 +61,7 @@ const NetworkGraph: React.FC<NetworkGraphProps> = ({ data }) => {
       if (link.health >= 70) return "rgba(250, 204, 21, 0.4)"; // Yellow
       return "rgba(248, 113, 113, 0.4)"; // Red
     }
-    return "rgba(99, 102, 241, 0.4)"; // Default accent
+    return "rgba(215, 168, 75, 0.4)"; // Default accent
   };
 
   const getNodeColor = (node: Node) => {

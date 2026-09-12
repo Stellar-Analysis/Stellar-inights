@@ -154,7 +154,7 @@ export const LiquidityHeatmap: React.FC<LiquidityHeatmapProps> = ({
               onClick={() => handlePeriodClick(period)}
               className={`px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest rounded-lg transition-all duration-300 ${
                 timePeriod === period
-                  ? "bg-accent text-white shadow-[0_0_15px_rgba(99,102,241,0.4)]"
+                  ? "bg-accent text-white shadow-[0_0_15px_rgba(215, 168, 75,0.4)]"
                   : "text-muted-foreground hover:text-foreground hover:bg-white/5"
               }`}
             >
@@ -252,7 +252,7 @@ export const LiquidityHeatmap: React.FC<LiquidityHeatmapProps> = ({
                           >
                             {cell ? (
                               <div
-                                className={`w-full h-full rounded-lg cursor-pointer transition-all duration-300 shadow-sm hover:shadow-[0_0_20px_rgba(99,102,241,0.2)] flex flex-col items-center justify-center border border-white/10 ${getLiquidityColor(
+                                className={`w-full h-full rounded-lg cursor-pointer transition-all duration-300 shadow-sm hover:shadow-[0_0_20px_rgba(215, 168, 75,0.2)] flex flex-col items-center justify-center border border-white/10 ${getLiquidityColor(
                                   cell.liquidity,
                                 )} ${getOpacity(cell.liquidity)}`}
                               >

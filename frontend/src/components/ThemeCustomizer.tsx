@@ -43,7 +43,7 @@ function ThemeCard({ preference, label, icon: Icon, active, onClick, preview }: 
       aria-label={`Set theme to ${label}`}
       className={`relative flex flex-col gap-3 p-4 rounded-2xl border-2 transition-all cursor-pointer w-full text-left ${
         active
-          ? "border-accent bg-accent/10 shadow-[0_0_20px_rgba(99,102,241,0.2)]"
+          ? "border-accent bg-accent/10 shadow-[0_0_20px_rgba(215, 168, 75,0.2)]"
           : "border-border hover:border-accent/40 bg-card"
       }`}
     >

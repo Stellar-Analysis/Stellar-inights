@@ -94,7 +94,7 @@ export const LiquidityChart: React.FC<LiquidityChartProps> = ({ data }) => {
                 fontSize: "12px",
                 fontFamily: "monospace",
               })}
-              cursor={{ stroke: "rgba(99, 102, 241, 0.2)", strokeWidth: 1 }}
+              cursor={{ stroke: "rgba(215, 168, 75, 0.2)", strokeWidth: 1 }}
               formatter={(value?: number) => {
                 if (typeof value !== "number") return ["-", "Total Liquidity"];
                 return [`$${(value / 1000000).toFixed(2)}M`, "Total Liquidity"];

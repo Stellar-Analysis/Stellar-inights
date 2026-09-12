@@ -351,8 +351,8 @@ export default function NotificationsDemo() {
               </p>
             </div>
             <div className="text-center">
-              <div className="bg-indigo-100 dark:bg-indigo-900 rounded-full p-3 w-12 h-12 mx-auto mb-3 flex items-center justify-center">
-                <Camera className="h-6 w-6 text-indigo-600 dark:text-indigo-400" />
+              <div className="bg-amber-100 dark:bg-amber-900 rounded-full p-3 w-12 h-12 mx-auto mb-3 flex items-center justify-center">
+                <Camera className="h-6 w-6 text-amber-600 dark:text-amber-400" />
               </div>
               <h3 className="font-medium text-gray-900 dark:text-white mb-2">Preferences</h3>
               <p className="text-sm text-muted-foreground dark:text-muted-foreground">

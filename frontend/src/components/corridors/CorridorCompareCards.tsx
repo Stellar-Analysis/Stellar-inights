@@ -157,7 +157,7 @@ export function BestTimeToTransact({ corridors }: { corridors: CorridorMetrics[]
 
     return (
         <section
-            className="bg-gradient-to-r from-blue-600 to-indigo-700 rounded-xl p-6 text-white shadow-lg mb-8"
+            className="bg-gradient-to-r from-amber-600 to-amber-800 rounded-xl p-6 text-white shadow-lg mb-8"
             aria-labelledby="best-time-heading"
         >
             <h3 id="best-time-heading" className="text-lg font-bold mb-4 flex items-center gap-2">

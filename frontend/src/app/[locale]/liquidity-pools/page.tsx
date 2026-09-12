@@ -399,7 +399,7 @@ export default function LiquidityPoolsPage() {
                 <span className="text-[10px] font-mono text-muted-foreground uppercase">
                   24h Volume
                 </span>
-                <span className="text-sm font-mono font-bold text-indigo-400">
+                <span className="text-sm font-mono font-bold text-amber-400">
                   {formatCurrency(selectedPool.volume_24h_usd)}
                 </span>
               </div>

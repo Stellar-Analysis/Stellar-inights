@@ -114,7 +114,7 @@ export function AssetPortfolio({ assets }: AssetPortfolioProps) {
               <div className="flex items-center gap-2">
                 <Filter className="w-4 h-4 text-slate-400" />
                 <select
-                  className="bg-slate-950 border border-slate-700 text-slate-300 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block p-2"
+                  className="bg-slate-950 border border-slate-700 text-slate-300 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block p-2"
                   value={filterType}
                   onChange={(e) => setFilterType(e.target.value as "all" | "credit_alphanum4" | "credit_alphanum12")}
                 >
@@ -132,13 +132,13 @@ export function AssetPortfolio({ assets }: AssetPortfolioProps) {
                 <div className="flex gap-1">
                   <button
                     onClick={() => toggleSort("volume_24h_usd")}
-                    className={`px-2 py-1 text-xs rounded-md ${sortConfig.key === "volume_24h_usd" ? "bg-indigo-500/20 text-indigo-400" : "text-slate-500 hover:text-slate-300"}`}
+                    className={`px-2 py-1 text-xs rounded-md ${sortConfig.key === "volume_24h_usd" ? "bg-amber-500/20 text-amber-400" : "text-slate-500 hover:text-slate-300"}`}
                   >
                     Vol
                   </button>
                   <button
                     onClick={() => toggleSort("success_rate")}
-                    className={`px-2 py-1 text-xs rounded-md ${sortConfig.key === "success_rate" ? "bg-indigo-500/20 text-indigo-400" : "text-slate-500 hover:text-slate-300"}`}
+                    className={`px-2 py-1 text-xs rounded-md ${sortConfig.key === "success_rate" ? "bg-amber-500/20 text-amber-400" : "text-slate-500 hover:text-slate-300"}`}
                   >
                     Success
                   </button>

@@ -161,7 +161,7 @@ function AnchorDetailPageContent({
                     key={i}
                     className="flex justify-between items-start text-sm"
                   >
-                    <span className="text-indigo-400 font-medium">
+                    <span className="text-amber-400 font-medium">
                       {item.corridor_id}
                     </span>
                     <span className="text-slate-500 text-xs flex items-center gap-1">
@@ -198,7 +198,7 @@ export default function AnchorDetailPage(props: {
     <Suspense
       fallback={
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex items-center justify-center min-h-[400px]">
-          <div className="w-8 h-8 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
+          <div className="w-8 h-8 border-4 border-amber-500 border-t-transparent rounded-full animate-spin"></div>
         </div>
       }
     >
