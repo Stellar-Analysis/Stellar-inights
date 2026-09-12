@@ -127,7 +127,9 @@ export function useRealtimeCorridors(
     logger.debug("Disconnected from corridor WebSocket");
   });
   const stableOnError = useStableCallback((error: Event) => {
-    logger.error("Corridor WebSocket error:", error);
+    // No backend reachable is expected here (see useWebSocket's presence
+    // fallback) - not a real bug, so this stays at debug level.
+    logger.debug("Corridor WebSocket error:", error);
   });
   const stableOnStaleData = useStableCallback(() => {
     logger.warn("Corridor data is stale - consider fetching snapshot");

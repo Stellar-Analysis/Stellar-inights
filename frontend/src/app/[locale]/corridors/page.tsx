@@ -152,7 +152,7 @@ function CorridorsPageContent() {
       } catch (err) {
         // Mock fallback (backend not reachable) — mirrors the mockCorridors
         // fallback above. Randomized so the callout doesn't look static.
-        logger.error("Error fetching corridor insights, using mock data:", err);
+        logger.debug("Error fetching corridor insights, using mock data:", err);
         setInsights(generateMockInsights());
       } finally {
         setInsightsLoading(false);

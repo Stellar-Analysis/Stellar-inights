@@ -134,7 +134,11 @@ export function useWebSocket(
 
       ws.onerror = (error) => {
         if (!presenceAssertedRef.current) {
-          logger.error("WebSocket error:", error);
+          // A connection failure here just means no backend is reachable -
+          // an expected, already-handled condition (see the presence
+          // fallback below), not a real bug. Kept at debug level so it's
+          // still traceable without surfacing as a console error.
+          logger.debug("WebSocket error:", error);
           setIsConnecting(false);
         }
         isConnectingRef.current = false;
@@ -159,7 +163,9 @@ export function useWebSocket(
         }
       };
     } catch (error) {
-      logger.error("Failed to create WebSocket connection:", error);
+      // Same reasoning as the onerror handler above: not reaching a
+      // backend is expected here, not exceptional.
+      logger.debug("Failed to create WebSocket connection:", error);
       setIsConnecting(false);
       isConnectingRef.current = false;
       setConnectionState(ConnectionState.DISCONNECTED);

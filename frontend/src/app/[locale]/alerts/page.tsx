@@ -7,8 +7,8 @@ import {
     alertsApi,
     CreateAlertRuleRequest,
     UpdateAlertRuleRequest,
-} from "../../lib/alerts-api";
-import { AlertRuleForm } from "../../components/AlertRuleForm";
+} from "@/lib/alerts-api";
+import { AlertRuleForm } from "@/components/AlertRuleForm";
 import { Trash2, Edit2, Play, Square, Bell, BellOff, XCircle, Clock } from "lucide-react";
 
 export default function AlertsPage() {
@@ -112,7 +112,7 @@ export default function AlertsPage() {
                 {!isFormOpen && (
                     <button
                         onClick={() => setIsFormOpen(true)}
-                        className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 font-medium shadow-sm transition-colors"
+                        className="inline-flex items-center px-4 py-2 bg-accent text-background rounded-lg hover:bg-accent/90 focus:ring-2 focus:ring-offset-2 focus:ring-accent font-medium shadow-sm transition-colors"
                     >
                         Create Alert Rule
                     </button>

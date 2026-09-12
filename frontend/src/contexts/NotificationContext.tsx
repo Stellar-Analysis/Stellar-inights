@@ -197,7 +197,9 @@ export const NotificationProvider: React.FC<NotificationProviderProps> = ({
     if (isClient) logger.debug("WebSocket disconnected");
   });
   const stableOnError = useStableCallback((error: Event) => {
-    if (isClient) logger.error("WebSocket error:", error);
+    // No backend reachable is expected here (see useWebSocket's presence
+    // fallback) - not a real bug, so this stays at debug level.
+    if (isClient) logger.debug("WebSocket error:", error);
   });
 
   const { isConnected, connectionAttempts: reconnectCount } = useWebSocket(websocketUrl, {

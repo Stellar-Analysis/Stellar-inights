@@ -81,7 +81,9 @@ export function useRealtimeAnchors(
     logger.debug("Disconnected from anchor WebSocket");
   });
   const stableOnError = useStableCallback((error: Event) => {
-    logger.error("Anchor WebSocket error:", error);
+    // No backend reachable is expected here (see useWebSocket's presence
+    // fallback) - not a real bug, so this stays at debug level.
+    logger.debug("Anchor WebSocket error:", error);
   });
 
   const {
