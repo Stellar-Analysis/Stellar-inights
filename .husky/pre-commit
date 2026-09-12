@@ -5,7 +5,6 @@ echo "🔍 Running pre-commit security checks..."
 
 # Run npm audit
 echo "📦 Checking for security vulnerabilities..."
-cd frontend
 if ! npm audit --audit-level=high; then
     echo "❌ Security vulnerabilities detected!"
     echo "Run 'npm audit fix' to resolve issues"

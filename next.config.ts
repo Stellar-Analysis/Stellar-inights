@@ -84,9 +84,6 @@ const nextConfig: NextConfig = {
       "react-force-graph-2d",
     ],
   },
-  turbopack: {
-    root: '../',
-  },
   images: {
     formats: ['image/webp', 'image/avif'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],

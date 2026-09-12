@@ -8,7 +8,7 @@ import { ContractSubmissionService } from "../services/contractSubmission";
 // regression suites, see docs/integration-testing.md).
 const fixture = JSON.parse(
   fs.readFileSync(
-    path.resolve(__dirname, "../../../fixtures/contract-flow.json"),
+    path.resolve(__dirname, "../../fixtures/contract-flow.json"),
     "utf-8"
   )
 );
