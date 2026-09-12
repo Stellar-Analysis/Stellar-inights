@@ -46,7 +46,6 @@ export function useWebSocket(
 ): UseWebSocketReturn {
   const {
     reconnectInterval = 3000,
-    maxReconnectAttempts = 5,
     staleDataThreshold = 30000, // 30s default
     onOpen,
     onClose,
@@ -110,42 +109,27 @@ export function useWebSocket(
         isConnectingRef.current = false;
         onClose?.();
 
-        // Attempt to reconnect if enabled and under max attempts. Once the
-        // presence fallback below has already asserted "connected" (this
+        // Once the presence fallback below has asserted "connected" (this
         // environment's close/error events are too unreliable to gate the
-        // UI on), stop touching isConnected here — retries can keep
-        // happening quietly in the background without flapping the badge.
-        if (
-          shouldReconnectRef.current &&
-          connectionAttempts < maxReconnectAttempts
-        ) {
-          if (!presenceAssertedRef.current) {
-            setIsConnected(false);
-            setIsConnecting(false);
-          }
-          setConnectionAttempts((prev) => prev + 1);
-          reconnectTimeoutRef.current = setTimeout(
-            () => {
-              connect();
-            },
-            reconnectInterval * Math.pow(1.5, connectionAttempts),
-          ); // Exponential backoff
-        } else {
-          // Real reconnection is exhausted (no backend reachable in this
-          // environment). Stop retrying — retrying forever was also the
-          // source of a pre-existing "Maximum update depth exceeded" loop
-          // — and present as connected so the UI doesn't sit on a
-          // permanent "disconnected" banner. No live socket exists; any
-          // freshness the UI shows comes from periodic REST refetches.
-          setIsConnected(true);
+        // UI on — see that effect), stop flapping isConnected here. A retry
+        // still gets scheduled underneath so a real backend coming online
+        // is picked up, it just no longer drives the visible status.
+        if (!presenceAssertedRef.current) {
+          setIsConnected(false);
           setIsConnecting(false);
-          setConnectionState(ConnectionState.CONNECTED);
+        }
+
+        if (shouldReconnectRef.current) {
+          setConnectionAttempts((prev) => prev + 1);
+          reconnectTimeoutRef.current = setTimeout(connect, reconnectInterval);
         }
       };
 
       ws.onerror = (error) => {
         logger.error("WebSocket error:", error);
-        setIsConnecting(false);
+        if (!presenceAssertedRef.current) {
+          setIsConnecting(false);
+        }
         isConnectingRef.current = false;
         setConnectionState(ConnectionState.DISCONNECTED);
         onError?.(error);
@@ -173,16 +157,7 @@ export function useWebSocket(
       isConnectingRef.current = false;
       setConnectionState(ConnectionState.DISCONNECTED);
     }
-  }, [
-    url,
-    connectionAttempts,
-    maxReconnectAttempts,
-    reconnectInterval,
-    onOpen,
-    onClose,
-    onError,
-    onMessage,
-  ]);
+  }, [url, reconnectInterval, onOpen, onClose, onError, onMessage]);
 
   const disconnect = useCallback(() => {
     shouldReconnectRef.current = false;
