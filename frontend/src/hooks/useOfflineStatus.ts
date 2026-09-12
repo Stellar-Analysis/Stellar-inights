@@ -16,11 +16,22 @@ export interface OfflineStatus {
  * without pulling in the full PWA installation machinery.
  */
 export function useOfflineStatus(): OfflineStatus {
-  const [isOnline, setIsOnline] = useState(() =>
-    typeof navigator !== 'undefined' ? navigator.onLine : true,
-  );
+  // Always start "online" so the first client render matches the server
+  // render exactly (SSR has no navigator, so it can only ever render the
+  // online state). The real value is picked up immediately after mount via
+  // the effect below — reading navigator.onLine in the initializer instead
+  // caused a hydration mismatch whenever the client's actual online state
+  // at hydration time happened to be false.
+  const [isOnline, setIsOnline] = useState(true);
   const [justReconnected, setJustReconnected] = useState(false);
   const [offlineSince, setOfflineSince] = useState<Date | null>(null);
+
+  useEffect(() => {
+    if (!navigator.onLine) {
+      setIsOnline(false);
+      setOfflineSince(new Date());
+    }
+  }, []);
 
   const handleOnline = useCallback(() => {
     setIsOnline(true);

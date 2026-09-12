@@ -159,7 +159,7 @@ export function useWebSocket(
     }
   }, [url, reconnectInterval, onOpen, onClose, onError, onMessage]);
 
-  const disconnect = useCallback(() => {
+  const disconnect = useCallback((resetPresence = false) => {
     shouldReconnectRef.current = false;
 
     if (reconnectTimeoutRef.current) {
@@ -172,9 +172,18 @@ export function useWebSocket(
       wsRef.current = null;
     }
 
-    setIsConnected(false);
-    setIsConnecting(false);
-    setConnectionState(ConnectionState.DISCONNECTED);
+    // The mount effect below re-runs (and calls this as its cleanup)
+    // whenever `connect` changes identity, which happens on every render
+    // if a caller passes inline (non-memoized) onOpen/onClose/onMessage
+    // callbacks — that re-run must not undo the presence fallback and
+    // flip the UI back to "disconnected". Only an explicit reconnect()
+    // call (resetPresence: true) is allowed to do that.
+    if (resetPresence || !presenceAssertedRef.current) {
+      if (resetPresence) presenceAssertedRef.current = false;
+      setIsConnected(false);
+      setIsConnecting(false);
+      setConnectionState(ConnectionState.DISCONNECTED);
+    }
   }, []);
 
   const send = useCallback((message: WsMessage) => {
@@ -206,8 +215,10 @@ export function useWebSocket(
   );
 
   const reconnect = useCallback(() => {
-    // Disconnect first
-    disconnect();
+    // Disconnect first — resetPresence so a user-triggered reconnect
+    // actually shows a fresh connecting/disconnected state rather than
+    // silently staying on the presence-asserted "connected" display.
+    disconnect(true);
 
     // Reset attempts and enable reconnect
     shouldReconnectRef.current = true;
