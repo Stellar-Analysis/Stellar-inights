@@ -5,6 +5,12 @@ import AnchorsPageContent from "./components/AnchorsPageContent";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { Skeleton, SkeletonTable } from "@/components/ui/Skeleton";
 
+// MainLayout's Header calls useNotifications(), which throws during static
+// generation on this route for reasons unrelated to this fix (a pre-existing
+// bug worth its own investigation). Keeping this dynamic preserves its
+// existing (working) request-time rendering behavior.
+export const dynamic = "force-dynamic";
+
 const AnchorsPage = () => {
   return (
     <ErrorBoundary>

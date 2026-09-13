@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo, Suspense } from "react";
 import dynamic from "next/dynamic";
 import { logger } from "@/lib/logger";
 import {
@@ -430,7 +430,9 @@ function CorridorsPageContent() {
 export default function CorridorsPage() {
   return (
     <ErrorBoundary>
-      <CorridorsPageContent />
+      <Suspense fallback={null}>
+        <CorridorsPageContent />
+      </Suspense>
     </ErrorBoundary>
   );
 }

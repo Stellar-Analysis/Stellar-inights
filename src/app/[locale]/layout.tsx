@@ -6,6 +6,7 @@ import { hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
+import { HtmlLangSync } from "@/components/HtmlLangSync";
 import { MonitoringProvider } from "@/components/MonitoringProvider";
 import { WalletProvider } from "@/components/lib/wallet-context";
 import { NotificationProvider } from "@/contexts/NotificationContext";
@@ -61,6 +62,7 @@ export default async function LocaleLayout({ children, params }: Props) {
 
   return (
     <NextIntlClientProvider messages={messages} locale={locale}>
+      <HtmlLangSync locale={locale} />
       <ErrorBoundary>
         <ThemeProvider>
           <UserPreferencesProvider>

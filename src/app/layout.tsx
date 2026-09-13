@@ -1,6 +1,5 @@
 import React from "react";
 import type { Metadata, Viewport } from "next";
-import { headers } from "next/headers";
 import { Fraunces, IBM_Plex_Mono, Inter } from "next/font/google";
 import "./globals.css";
 
@@ -45,17 +44,20 @@ export const metadata: Metadata = {
   formatDetection: { telephone: false },
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const headersList = await headers();
-  const locale = headersList.get("x-next-intl-locale") ?? "en";
-
+  // `lang` is synced to the active locale client-side (see HtmlLangSync,
+  // rendered from the [locale] layout) instead of reading it here via
+  // headers(). Calling a dynamic API like headers() in the root layout
+  // would force every route in the app into dynamic (per-request) rendering,
+  // since the root layout wraps the entire tree — defeating the static
+  // rendering that [locale]/layout.tsx's generateStaticParams enables.
   return (
     <html
-      lang={locale}
+      lang="en"
       className={`dark ${inter.variable} ${fraunces.variable} ${plexMono.variable}`}
       suppressHydrationWarning
     >
